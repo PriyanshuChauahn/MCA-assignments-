@@ -2,50 +2,50 @@ import java.util.Scanner;
 
 public class FactorsProgram {
 
-    // Method to find factors and return array
-    public static int[] findFactors(int num) {
-        // Step 1: Count number of factors
+    // Method to find factors and return them in an array
+    public static int[] findFactors(int number) {
+        // Count factors
         int count = 0;
-        for (int i = 1; i <= num; i++) {
-            if (num % i == 0) {
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
                 count++;
             }
         }
 
-        // Step 2: Store factors in array
+        // Store factors in array
         int[] factors = new int[count];
         int index = 0;
-        for (int i = 1; i <= num; i++) {
-            if (num % i == 0) {
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
                 factors[index++] = i;
             }
         }
         return factors;
     }
 
-    // Method to calculate sum of factors
-    public static int sumOfFactors(int[] factors) {
+    // Method to find sum of factors
+    public static int findSum(int[] arr) {
         int sum = 0;
-        for (int f : factors) {
-            sum += f;
+        for (int num : arr) {
+            sum += num;
         }
         return sum;
     }
 
-    // Method to calculate product of factors
-    public static long productOfFactors(int[] factors) {
+    // Method to find product of factors
+    public static long findProduct(int[] arr) {
         long product = 1;
-        for (int f : factors) {
-            product *= f;
+        for (int num : arr) {
+            product *= num;
         }
         return product;
     }
 
-    // Method to calculate sum of squares of factors
-    public static int sumOfSquares(int[] factors) {
+    // Method to find sum of squares of factors
+    public static int findSumOfSquares(int[] arr) {
         int sumSq = 0;
-        for (int f : factors) {
-            sumSq += Math.pow(f, 2);
+        for (int num : arr) {
+            sumSq += Math.pow(num, 2);
         }
         return sumSq;
     }
@@ -53,24 +53,24 @@ public class FactorsProgram {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Take user input
+        // Step 1: Input
         System.out.print("Enter a number: ");
-        int num = sc.nextInt();
+        int number = sc.nextInt();
 
-        // Find factors
-        int[] factors = findFactors(num);
+        // Step 2: Find factors
+        int[] factors = findFactors(number);
 
-        // Display factors
-        System.out.print("Factors of " + num + ": ");
+        // Step 3: Display factors
+        System.out.print("Factors of " + number + " are: ");
         for (int f : factors) {
             System.out.print(f + " ");
         }
         System.out.println();
 
-        // Display results
-        System.out.println("Sum of factors: " + sumOfFactors(factors));
-        System.out.println("Product of factors: " + productOfFactors(factors));
-        System.out.println("Sum of squares of factors: " + sumOfSquares(factors));
+        // Step 4: Other calculations
+        System.out.println("Sum of factors: " + findSum(factors));
+        System.out.println("Product of factors: " + findProduct(factors));
+        System.out.println("Sum of squares of factors: " + findSumOfSquares(factors));
 
         sc.close();
     }

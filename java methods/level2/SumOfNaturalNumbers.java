@@ -2,16 +2,17 @@ import java.util.Scanner;
 
 public class SumOfNaturalNumbers {
 
-    // Recursive method to find sum of n natural numbers
-    public static int sumRecursive(int n) {
+    // Recursive method
+    static int recursiveSum(int n) {
         if (n == 1) {
-            return 1;
+            return 1; // base case
+        } else {
+            return n + recursiveSum(n - 1);
         }
-        return n + sumRecursive(n - 1);
     }
 
     // Formula method
-    public static int sumFormula(int n) {
+    static int formulaSum(int n) {
         return n * (n + 1) / 2;
     }
 
@@ -22,27 +23,27 @@ public class SumOfNaturalNumbers {
         System.out.print("Enter a natural number: ");
         int n = sc.nextInt();
 
-        // Check for natural number
+        // Check if input is natural number
         if (n <= 0) {
-            System.out.println("Not a natural number! Exiting...");
+            System.out.println("Invalid input! Please enter a natural number (n > 0).");
             return;
         }
 
-        // Compute sums
-        int recursiveSum = sumRecursive(n);
-        int formulaSum = sumFormula(n);
+        // Compute using recursion
+        int sumRecursive = recursiveSum(n);
+
+        // Compute using formula
+        int sumFormula = formulaSum(n);
 
         // Display results
-        System.out.println("Sum of first " + n + " natural numbers (Recursive): " + recursiveSum);
-        System.out.println("Sum of first " + n + " natural numbers (Formula): " + formulaSum);
+        System.out.println("Sum of first " + n + " natural numbers (Recursion): " + sumRecursive);
+        System.out.println("Sum of first " + n + " natural numbers (Formula): " + sumFormula);
 
         // Compare results
-        if (recursiveSum == formulaSum) {
-            System.out.println(" Both computations match. The results are correct!");
+        if (sumRecursive == sumFormula) {
+            System.out.println("✅ Both results match. Computation is correct!");
         } else {
-            System.out.println(" Results do not match. Something is wrong.");
+            System.out.println(" Results do not match. Something went wrong.");
         }
-
-        sc.close();
     }
 }
